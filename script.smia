@@ -4,12 +4,12 @@ fdisk -size=1 -type=P -unit=M -fit=BF -name="Particion1" -path="/home/javier/Doc
 
 mount -name="Particion1" -path="/home/javier/Documentos/Archivos/P1Copy/P1/disks/DiscoLab.mia"
 
-mkfs -id=531A
+mkfs -id=351A
 
 mkdir -path="/home"
 mkdir -path="/home/usac"
 mkdir -path="/home/work"
 mkdir -path="/home/usac/mia"
 
-rep -id=531A -path="/home/javier/Documentos/Archivos/P1Copy/P1/backend/output/report_inode.png" -name=inode
-rep -id=531A -path="/home/javier/Documentos/Archivos/P1Copy/P1/backend/output/report_bm_inode.txt" -name=bm_inode
+rep -id=351A -path="/home/javier/Documentos/Archivos/P1Copy/P1/backend/output/report_inode.png" -name=inode
+rep -id=351A -path="/home/javier/Documentos/Archivos/P1Copy/P1/backend/output/report_bm_inode.txt" -name=bm_inode

@@ -2,9 +2,9 @@ package analyzer
 
 import (
 	commands "backend/commands"
-	"errors"  
-	"fmt"     
-	"strings" 
+	"errors"
+	"fmt"
+	"strings"
 )
 
 func Analyzer(input string) (string, error) {
@@ -27,6 +27,8 @@ func Analyzer(input string) (string, error) {
 		return commands.ParseRep(tokens[1:])
 	case "mkdir":
 		return commands.ParseMkdir(tokens[1:])
+	case "mkfile":
+		return commands.ParserMkfile(tokens[1:])
 	default:
 		return "", fmt.Errorf("comando desconocido: %s", tokens[0])
 	}
