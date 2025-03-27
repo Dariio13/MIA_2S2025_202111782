@@ -17,6 +17,8 @@ func Analyzer(input string) (string, error) {
 	switch tokens[0] {
 	case "mkdisk":
 		return commands.ParseMkdisk(tokens[1:])
+	case "rmdisk":
+		return commands.ParserRmdisk(tokens[1:])
 	case "fdisk":
 		return commands.ParseFdisk(tokens[1:])
 	case "mount":
