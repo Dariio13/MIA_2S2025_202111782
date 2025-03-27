@@ -41,17 +41,17 @@ func ReportInode(superblock *structures.SuperBlock, diskPath string, path string
 
 		// Definir el contenido DOT para el inodo actual
 		dotContent += fmt.Sprintf(`inode%d [label=<
-            <table border="0" cellborder="1" cellspacing="0">
-                <tr><td colspan="2"> REPORTE INODO %d </td></tr>
-                <tr><td>i_uid</td><td>%d</td></tr>
-                <tr><td>i_gid</td><td>%d</td></tr>
-                <tr><td>i_size</td><td>%d</td></tr>
-                <tr><td>i_atime</td><td>%s</td></tr>
-                <tr><td>i_ctime</td><td>%s</td></tr>
-                <tr><td>i_mtime</td><td>%s</td></tr>
-                <tr><td>i_type</td><td>%c</td></tr>
-                <tr><td>i_perm</td><td>%s</td></tr>
-                <tr><td colspan="2">BLOQUES DIRECTOS</td></tr>
+            <table border="0" cellborder="1" cellspacing="0" bgcolor="#E6E6FA" color="#8A4FFF">
+                <tr><td colspan="2" bgcolor="#D8BFD8" color="#5D3FD3"> REPORTE INODO %d </td></tr>
+                <tr><td bgcolor="#F0E6FF">i_uid</td><td bgcolor="#F0E6FF">%d</td></tr>
+                <tr><td bgcolor="#E6E6FA">i_gid</td><td bgcolor="#E6E6FA">%d</td></tr>
+                <tr><td bgcolor="#F0E6FF">i_size</td><td bgcolor="#F0E6FF">%d</td></tr>
+                <tr><td bgcolor="#E6E6FA">i_atime</td><td bgcolor="#E6E6FA">%s</td></tr>
+                <tr><td bgcolor="#F0E6FF">i_ctime</td><td bgcolor="#F0E6FF">%s</td></tr>
+                <tr><td bgcolor="#E6E6FA">i_mtime</td><td bgcolor="#E6E6FA">%s</td></tr>
+                <tr><td bgcolor="#F0E6FF">i_type</td><td bgcolor="#F0E6FF">%c</td></tr>
+                <tr><td bgcolor="#E6E6FA">i_perm</td><td bgcolor="#E6E6FA">%s</td></tr>
+                <tr><td colspan="2" bgcolor="#D8BFD8" color="#5D3FD3">BLOQUES DIRECTOS</td></tr>
             `, i, i, inode.I_uid, inode.I_gid, inode.I_size, atime, ctime, mtime, rune(inode.I_type[0]), string(inode.I_perm[:]))
 
 		// Agregar los bloques directos a la tabla hasta el índice 11
@@ -62,14 +62,14 @@ func ReportInode(superblock *structures.SuperBlock, diskPath string, path string
 			dotContent += fmt.Sprintf("<tr><td>%d</td><td>%d</td></tr>", j+1, block)
 		}
 
-		// Agregar los bloques indirectos a la tabla
+		// Agregar los bloques indirectos a la tabla con colores violeta
 		dotContent += fmt.Sprintf(`
-                <tr><td colspan="2">BLOQUE INDIRECTO</td></tr>
-                <tr><td>%d</td><td>%d</td></tr>
-                <tr><td colspan="2">BLOQUE INDIRECTO DOBLE</td></tr>
-                <tr><td>%d</td><td>%d</td></tr>
-                <tr><td colspan="2">BLOQUE INDIRECTO TRIPLE</td></tr>
-                <tr><td>%d</td><td>%d</td></tr>
+                <tr><td colspan="2" bgcolor="#D8BFD8" color="#5D3FD3">BLOQUE INDIRECTO</td></tr>
+                <tr><td bgcolor="#F0E6FF">%d</td><td bgcolor="#F0E6FF">%d</td></tr>
+                <tr><td colspan="2" bgcolor="#D8BFD8" color="#5D3FD3">BLOQUE INDIRECTO DOBLE</td></tr>
+                <tr><td bgcolor="#E6E6FA">%d</td><td bgcolor="#E6E6FA">%d</td></tr>
+                <tr><td colspan="2" bgcolor="#D8BFD8" color="#5D3FD3">BLOQUE INDIRECTO TRIPLE</td></tr>
+                <tr><td bgcolor="#F0E6FF">%d</td><td bgcolor="#F0E6FF">%d</td></tr>
             </table>>];
         `, 13, inode.I_block[12], 14, inode.I_block[13], 15, inode.I_block[14])
 
