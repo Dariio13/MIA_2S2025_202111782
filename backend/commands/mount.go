@@ -78,7 +78,7 @@ func ParseMount(tokens []string) (string, error) {
 	}
 
 	// Montamos la partición
-	err := commandMount(cmd)
+	idPartition, err := commandMount(cmd)
 	if err != nil {
 		return "", err
 	}
@@ -91,7 +91,7 @@ func ParseMount(tokens []string) (string, error) {
 		cmd.path, cmd.name, idPartition), nil
 }
 
-func commandMount(mount *MOUNT) error {
+func commandMount(mount *MOUNT) (string, error) {
 	// Crear una instancia de MBR
 	var mbr structures.MBR
 
@@ -99,14 +99,14 @@ func commandMount(mount *MOUNT) error {
 	err := mbr.Deserialize(mount.path)
 	if err != nil {
 		fmt.Println("Error deserializando el MBR:", err)
-		return err
+		return "", err
 	}
 
 	// Buscar la partición con el nombre especificado
 	partition, indexPartition := mbr.GetPartitionByName(mount.name)
 	if partition == nil {
 		fmt.Println("Error: la partición no existe")
-		return errors.New("la partición no existe")
+		return "", errors.New("la partición no existe")
 	}
 
 	/* SOLO PARA VERIFICACIÓN */
@@ -118,7 +118,7 @@ func commandMount(mount *MOUNT) error {
 	idPartition, partitionCorrelative, err := generatePartitionID(mount)
 	if err != nil {
 		fmt.Println("Error generando el id de partición:", err)
-		return err
+		return "", err
 	}
 
 	//  Guardar la partición montada en la lista de montajes globales
@@ -139,10 +139,10 @@ func commandMount(mount *MOUNT) error {
 	err = mbr.Serialize(mount.path)
 	if err != nil {
 		fmt.Println("Error serializando el MBR:", err)
-		return err
+		return "", err
 	}
 
-	return nil
+	return idPartition, nil
 }
 
 func generatePartitionID(mount *MOUNT) (string, int, error) {

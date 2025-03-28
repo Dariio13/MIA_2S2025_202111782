@@ -1,8 +1,8 @@
-mkdisk -size=5 -unit=M -fit=WF -path="/home/javier/Documentos/Archivos/P1/MIA_1S2025_P1_202200035/disks/DiscoLab.mia"
+mkdisk -size=5 -unit=M -fit=WF -path="/home/javier/Documentos/Archivos/P1C/MIA_1S2025_P1_202200035/disks/DiscoLab.mia"
 
-fdisk -size=1 -type=P -unit=M -fit=BF -name="Particion1" -path="/home/javier/Documentos/Archivos/P1/MIA_1S2025_P1_202200035/disks/DiscoLab.mia"
+fdisk -size=1 -type=P -unit=M -fit=BF -name="Particion1" -path="/home/javier/Documentos/Archivos/P1C/MIA_1S2025_P1_202200035/disks/DiscoLab.mia"
 
-mount -name="Particion1" -path="/home/javier/Documentos/Archivos/P1/MIA_1S2025_P1_202200035/disks/DiscoLab.mia"
+mount -name="Particion1" -path="/home/javier/Documentos/Archivos/P1C/MIA_1S2025_P1_202200035/disks/DiscoLab.mia"
 
 mkfs -id=351A
 
@@ -13,5 +13,5 @@ mkdir -path="/home/usac/mia"
 
 mkfile -path="/home/usac/mia/texto.txt"
 
-rep -id=351A -path="/home/javier/Documentos/Archivos/P1/MIA_1S2025_P1_202200035/backend/output/report_inode.png" -name=inode
-rep -id=351A -path="/home/javier/Documentos/Archivos/P1/MIA_1S2025_P1_202200035/backend/output/report_bm_inode.txt" -name=bm_inode
+rep -id=351A -path="/home/javier/Documentos/Archivos/P1C/MIA_1S2025_P1_202200035/backend/output/report_inode.png" -name=inode
+rep -id=351A -path="/home/javier/Documentos/Archivos/P1C/MIA_1S2025_P1_202200035/backend/output/report_bm_inode.txt" -name=bm_inode

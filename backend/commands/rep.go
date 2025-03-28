@@ -120,19 +120,16 @@ func commandRep(rep *REP) error {
 	case "mbr":
 		err = reports.ReportMBR(mountedMbr, rep.path)
 		if err != nil {
-			fmt.Printf("MBR")
 			fmt.Printf("Error: %v\n", err)
 		}
 	case "inode":
 		err = reports.ReportInode(mountedSb, mountedDiskPath, rep.path)
 		if err != nil {
-			fmt.Printf("Inode")
 			fmt.Printf("Error: %v\n", err)
 		}
 	case "bm_inode":
 		err = reports.ReportBMInode(mountedSb, mountedDiskPath, rep.path)
 		if err != nil {
-			fmt.Printf("BMI")
 			fmt.Printf("Error: %v\n", err)
 		}
 	}

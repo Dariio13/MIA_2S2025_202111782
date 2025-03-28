@@ -1,7 +1,7 @@
 package commands
 
 import (
-	global "backend/global"
+	stores "backend/stores"
 	structures "backend/structures"
 	utils "backend/utils"
 	"errors"
@@ -19,6 +19,7 @@ type MKFILE struct {
 }
 
 func ParserMkfile(tokens []string) (string, error) {
+	fmt.Println("LLEGUE A FILE?")
 	cmd := &MKFILE{}
 
 	args := strings.Join(tokens, " ")
@@ -97,8 +98,20 @@ func ParserMkfile(tokens []string) (string, error) {
 }
 
 func commandMkfile(mkfile *MKFILE) error {
+
+	// Obtener el id de la partición montada que está logueada
+	var partitionID string
+	fmt.Println("¿Está autenticado?:", stores.Auth.IsAuthenticated())
+
+	if stores.Auth.IsAuthenticated() {
+		// Get the current partition ID
+		partitionID = stores.Auth.GetPartitionID()
+	} else {
+		return errors.New("no se ha iniciado sesión en ninguna partición")
+	}
+
 	// Obtener la partición montada
-	partitionSuperblock, mountedPartition, partitionPath, err := global.GetMountedPartitionSuperblock(idPartition)
+	partitionSuperblock, mountedPartition, partitionPath, err := stores.GetMountedPartitionSuperblock(partitionID)
 	if err != nil {
 		return fmt.Errorf("error al obtener la partición montada: %w", err)
 	}
