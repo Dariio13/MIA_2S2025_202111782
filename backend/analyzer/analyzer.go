@@ -8,6 +8,12 @@ import (
 )
 
 func Analyzer(input string) (string, error) {
+
+	// Ignorar líneas de comentarios o vacías desde el principio
+	if strings.TrimSpace(input) == "" || strings.HasPrefix(strings.TrimSpace(input), "#") {
+		return "", nil
+	}
+
 	tokens := strings.Fields(input)
 
 	if len(tokens) == 0 {
@@ -35,6 +41,8 @@ func Analyzer(input string) (string, error) {
 		return commands.ParseLogin(tokens[1:])
 	case "logout":
 		return commands.ParseLogout(tokens[1:])
+	// case "#":
+	// 	return "", nil
 	default:
 		return "", fmt.Errorf("comando desconocido: %s", tokens[0])
 	}

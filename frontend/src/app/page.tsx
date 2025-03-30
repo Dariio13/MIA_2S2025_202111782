@@ -20,11 +20,25 @@ export default function Home() {
       setOutput("Ingrese los comandos...");
       return;
     }
-
+  
     setIsLoading(true);
     try {
-      const result = await executeCommands(input);
-      setOutput(result);
+      // Dividir el input en líneas
+      const lines = input.split('\n');
+      let outputResult = '';
+      
+      for (const line of lines) {
+        const trimmedLine = line.trim();
+        // Solo procesar líneas que no sean comentarios o vacías
+        if (trimmedLine && !trimmedLine.startsWith('#')) {
+          const result = await executeCommands(trimmedLine);
+          if (result) {
+            outputResult += result + '\n';
+          }
+        }
+      }
+      
+      setOutput(outputResult);
     } catch (error) {
       setOutput(error instanceof Error ? error.message : "Error desconocido");
     } finally {
