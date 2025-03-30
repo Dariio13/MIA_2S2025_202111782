@@ -102,6 +102,16 @@ func ParseLogin(tokens []string) (string, error) {
 }
 
 func commandLogin(login *LOGIN) error {
+	// Verificar si ya hay una sesión iniciada
+	if stores.Auth.IsAuthenticated() {
+		currentUser, _, currentPartitionID := stores.Auth.GetCurrentUser()
+
+		// Si intenta iniciar sesión con el mismo usuario y partición
+		if currentUser == login.user && currentPartitionID == login.id {
+			return fmt.Errorf("ya has iniciado sesión como %s en la partición %s", login.user, login.id)
+		}
+	}
+
 	// Obtener la partición montada
 	partitionSuperblock, _, partitionPath, err := stores.GetMountedPartitionSuperblock(login.id)
 	if err != nil {

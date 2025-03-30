@@ -6,9 +6,9 @@ digraph G {
                 <tr><td bgcolor="#F0E6FF">i_uid</td><td bgcolor="#F0E6FF">1</td></tr>
                 <tr><td bgcolor="#E6E6FA">i_gid</td><td bgcolor="#E6E6FA">1</td></tr>
                 <tr><td bgcolor="#F0E6FF">i_size</td><td bgcolor="#F0E6FF">0</td></tr>
-                <tr><td bgcolor="#E6E6FA">i_atime</td><td bgcolor="#E6E6FA">2025-03-28T12:18:40-06:00</td></tr>
-                <tr><td bgcolor="#F0E6FF">i_ctime</td><td bgcolor="#F0E6FF">2025-03-28T12:18:40-06:00</td></tr>
-                <tr><td bgcolor="#E6E6FA">i_mtime</td><td bgcolor="#E6E6FA">2025-03-28T12:18:40-06:00</td></tr>
+                <tr><td bgcolor="#E6E6FA">i_atime</td><td bgcolor="#E6E6FA">2025-03-30T13:18:24-06:00</td></tr>
+                <tr><td bgcolor="#F0E6FF">i_ctime</td><td bgcolor="#F0E6FF">2025-03-30T13:18:24-06:00</td></tr>
+                <tr><td bgcolor="#E6E6FA">i_mtime</td><td bgcolor="#E6E6FA">2025-03-30T13:18:24-06:00</td></tr>
                 <tr><td bgcolor="#F0E6FF">i_type</td><td bgcolor="#F0E6FF">0</td></tr>
                 <tr><td bgcolor="#E6E6FA">i_perm</td><td bgcolor="#E6E6FA">777</td></tr>
                 <tr><td colspan="2" bgcolor="#D8BFD8" color="#5D3FD3">BLOQUES DIRECTOS</td></tr>
@@ -27,9 +27,9 @@ inode1 [label=<
                 <tr><td bgcolor="#F0E6FF">i_uid</td><td bgcolor="#F0E6FF">1</td></tr>
                 <tr><td bgcolor="#E6E6FA">i_gid</td><td bgcolor="#E6E6FA">1</td></tr>
                 <tr><td bgcolor="#F0E6FF">i_size</td><td bgcolor="#F0E6FF">27</td></tr>
-                <tr><td bgcolor="#E6E6FA">i_atime</td><td bgcolor="#E6E6FA">2025-03-28T12:18:40-06:00</td></tr>
-                <tr><td bgcolor="#F0E6FF">i_ctime</td><td bgcolor="#F0E6FF">2025-03-28T12:18:40-06:00</td></tr>
-                <tr><td bgcolor="#E6E6FA">i_mtime</td><td bgcolor="#E6E6FA">2025-03-28T12:18:40-06:00</td></tr>
+                <tr><td bgcolor="#E6E6FA">i_atime</td><td bgcolor="#E6E6FA">2025-03-30T13:18:24-06:00</td></tr>
+                <tr><td bgcolor="#F0E6FF">i_ctime</td><td bgcolor="#F0E6FF">2025-03-30T13:18:24-06:00</td></tr>
+                <tr><td bgcolor="#E6E6FA">i_mtime</td><td bgcolor="#E6E6FA">2025-03-30T13:18:24-06:00</td></tr>
                 <tr><td bgcolor="#F0E6FF">i_type</td><td bgcolor="#F0E6FF">1</td></tr>
                 <tr><td bgcolor="#E6E6FA">i_perm</td><td bgcolor="#E6E6FA">777</td></tr>
                 <tr><td colspan="2" bgcolor="#D8BFD8" color="#5D3FD3">BLOQUES DIRECTOS</td></tr>
@@ -48,9 +48,9 @@ inode2 [label=<
                 <tr><td bgcolor="#F0E6FF">i_uid</td><td bgcolor="#F0E6FF">1</td></tr>
                 <tr><td bgcolor="#E6E6FA">i_gid</td><td bgcolor="#E6E6FA">1</td></tr>
                 <tr><td bgcolor="#F0E6FF">i_size</td><td bgcolor="#F0E6FF">0</td></tr>
-                <tr><td bgcolor="#E6E6FA">i_atime</td><td bgcolor="#E6E6FA">2025-03-28T12:18:40-06:00</td></tr>
-                <tr><td bgcolor="#F0E6FF">i_ctime</td><td bgcolor="#F0E6FF">2025-03-28T12:18:40-06:00</td></tr>
-                <tr><td bgcolor="#E6E6FA">i_mtime</td><td bgcolor="#E6E6FA">2025-03-28T12:18:40-06:00</td></tr>
+                <tr><td bgcolor="#E6E6FA">i_atime</td><td bgcolor="#E6E6FA">2025-03-30T13:18:24-06:00</td></tr>
+                <tr><td bgcolor="#F0E6FF">i_ctime</td><td bgcolor="#F0E6FF">2025-03-30T13:18:24-06:00</td></tr>
+                <tr><td bgcolor="#E6E6FA">i_mtime</td><td bgcolor="#E6E6FA">2025-03-30T13:18:24-06:00</td></tr>
                 <tr><td bgcolor="#F0E6FF">i_type</td><td bgcolor="#F0E6FF">0</td></tr>
                 <tr><td bgcolor="#E6E6FA">i_perm</td><td bgcolor="#E6E6FA">664</td></tr>
                 <tr><td colspan="2" bgcolor="#D8BFD8" color="#5D3FD3">BLOQUES DIRECTOS</td></tr>
@@ -69,9 +69,9 @@ inode3 [label=<
                 <tr><td bgcolor="#F0E6FF">i_uid</td><td bgcolor="#F0E6FF">1</td></tr>
                 <tr><td bgcolor="#E6E6FA">i_gid</td><td bgcolor="#E6E6FA">1</td></tr>
                 <tr><td bgcolor="#F0E6FF">i_size</td><td bgcolor="#F0E6FF">0</td></tr>
-                <tr><td bgcolor="#E6E6FA">i_atime</td><td bgcolor="#E6E6FA">2025-03-28T12:18:40-06:00</td></tr>
-                <tr><td bgcolor="#F0E6FF">i_ctime</td><td bgcolor="#F0E6FF">2025-03-28T12:18:40-06:00</td></tr>
-                <tr><td bgcolor="#E6E6FA">i_mtime</td><td bgcolor="#E6E6FA">2025-03-28T12:18:40-06:00</td></tr>
+                <tr><td bgcolor="#E6E6FA">i_atime</td><td bgcolor="#E6E6FA">2025-03-30T13:18:24-06:00</td></tr>
+                <tr><td bgcolor="#F0E6FF">i_ctime</td><td bgcolor="#F0E6FF">2025-03-30T13:18:24-06:00</td></tr>
+                <tr><td bgcolor="#E6E6FA">i_mtime</td><td bgcolor="#E6E6FA">2025-03-30T13:18:24-06:00</td></tr>
                 <tr><td bgcolor="#F0E6FF">i_type</td><td bgcolor="#F0E6FF">0</td></tr>
                 <tr><td bgcolor="#E6E6FA">i_perm</td><td bgcolor="#E6E6FA">664</td></tr>
                 <tr><td colspan="2" bgcolor="#D8BFD8" color="#5D3FD3">BLOQUES DIRECTOS</td></tr>
@@ -90,9 +90,9 @@ inode4 [label=<
                 <tr><td bgcolor="#F0E6FF">i_uid</td><td bgcolor="#F0E6FF">1</td></tr>
                 <tr><td bgcolor="#E6E6FA">i_gid</td><td bgcolor="#E6E6FA">1</td></tr>
                 <tr><td bgcolor="#F0E6FF">i_size</td><td bgcolor="#F0E6FF">0</td></tr>
-                <tr><td bgcolor="#E6E6FA">i_atime</td><td bgcolor="#E6E6FA">2025-03-28T12:18:40-06:00</td></tr>
-                <tr><td bgcolor="#F0E6FF">i_ctime</td><td bgcolor="#F0E6FF">2025-03-28T12:18:40-06:00</td></tr>
-                <tr><td bgcolor="#E6E6FA">i_mtime</td><td bgcolor="#E6E6FA">2025-03-28T12:18:40-06:00</td></tr>
+                <tr><td bgcolor="#E6E6FA">i_atime</td><td bgcolor="#E6E6FA">2025-03-30T13:18:24-06:00</td></tr>
+                <tr><td bgcolor="#F0E6FF">i_ctime</td><td bgcolor="#F0E6FF">2025-03-30T13:18:24-06:00</td></tr>
+                <tr><td bgcolor="#E6E6FA">i_mtime</td><td bgcolor="#E6E6FA">2025-03-30T13:18:24-06:00</td></tr>
                 <tr><td bgcolor="#F0E6FF">i_type</td><td bgcolor="#F0E6FF">0</td></tr>
                 <tr><td bgcolor="#E6E6FA">i_perm</td><td bgcolor="#E6E6FA">664</td></tr>
                 <tr><td colspan="2" bgcolor="#D8BFD8" color="#5D3FD3">BLOQUES DIRECTOS</td></tr>
@@ -111,9 +111,9 @@ inode5 [label=<
                 <tr><td bgcolor="#F0E6FF">i_uid</td><td bgcolor="#F0E6FF">1</td></tr>
                 <tr><td bgcolor="#E6E6FA">i_gid</td><td bgcolor="#E6E6FA">1</td></tr>
                 <tr><td bgcolor="#F0E6FF">i_size</td><td bgcolor="#F0E6FF">0</td></tr>
-                <tr><td bgcolor="#E6E6FA">i_atime</td><td bgcolor="#E6E6FA">2025-03-28T12:18:40-06:00</td></tr>
-                <tr><td bgcolor="#F0E6FF">i_ctime</td><td bgcolor="#F0E6FF">2025-03-28T12:18:40-06:00</td></tr>
-                <tr><td bgcolor="#E6E6FA">i_mtime</td><td bgcolor="#E6E6FA">2025-03-28T12:18:40-06:00</td></tr>
+                <tr><td bgcolor="#E6E6FA">i_atime</td><td bgcolor="#E6E6FA">2025-03-30T13:18:24-06:00</td></tr>
+                <tr><td bgcolor="#F0E6FF">i_ctime</td><td bgcolor="#F0E6FF">2025-03-30T13:18:24-06:00</td></tr>
+                <tr><td bgcolor="#E6E6FA">i_mtime</td><td bgcolor="#E6E6FA">2025-03-30T13:18:24-06:00</td></tr>
                 <tr><td bgcolor="#F0E6FF">i_type</td><td bgcolor="#F0E6FF">0</td></tr>
                 <tr><td bgcolor="#E6E6FA">i_perm</td><td bgcolor="#E6E6FA">664</td></tr>
                 <tr><td colspan="2" bgcolor="#D8BFD8" color="#5D3FD3">BLOQUES DIRECTOS</td></tr>
@@ -132,9 +132,9 @@ inode6 [label=<
                 <tr><td bgcolor="#F0E6FF">i_uid</td><td bgcolor="#F0E6FF">1</td></tr>
                 <tr><td bgcolor="#E6E6FA">i_gid</td><td bgcolor="#E6E6FA">1</td></tr>
                 <tr><td bgcolor="#F0E6FF">i_size</td><td bgcolor="#F0E6FF">0</td></tr>
-                <tr><td bgcolor="#E6E6FA">i_atime</td><td bgcolor="#E6E6FA">2025-03-28T12:18:40-06:00</td></tr>
-                <tr><td bgcolor="#F0E6FF">i_ctime</td><td bgcolor="#F0E6FF">2025-03-28T12:18:40-06:00</td></tr>
-                <tr><td bgcolor="#E6E6FA">i_mtime</td><td bgcolor="#E6E6FA">2025-03-28T12:18:40-06:00</td></tr>
+                <tr><td bgcolor="#E6E6FA">i_atime</td><td bgcolor="#E6E6FA">2025-03-30T13:18:24-06:00</td></tr>
+                <tr><td bgcolor="#F0E6FF">i_ctime</td><td bgcolor="#F0E6FF">2025-03-30T13:18:24-06:00</td></tr>
+                <tr><td bgcolor="#E6E6FA">i_mtime</td><td bgcolor="#E6E6FA">2025-03-30T13:18:24-06:00</td></tr>
                 <tr><td bgcolor="#F0E6FF">i_type</td><td bgcolor="#F0E6FF">1</td></tr>
                 <tr><td bgcolor="#E6E6FA">i_perm</td><td bgcolor="#E6E6FA">777</td></tr>
                 <tr><td colspan="2" bgcolor="#D8BFD8" color="#5D3FD3">BLOQUES DIRECTOS</td></tr>

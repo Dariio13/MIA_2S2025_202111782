@@ -6,6 +6,9 @@ mount -name="Particion1" -path="/home/javier/Documentos/Archivos/P1C/MIA_1S2025_
 
 mkfs -id=351A
 
+login -user=root -pass=123 -id=351A
+
+
 mkdir -path="/home"
 mkdir -path="/home/usac"
 mkdir -path="/home/work"
