@@ -1,20 +1,20 @@
-mkdisk -size=5 -unit=M -fit=WF -path="/home/javier/Documentos/Archivos/P1C/MIA_1S2025_P1_202200035/disks/DiscoLab.mia"
+mkdisk -size=5 -unit=M -fit=WF -path="C:/Users/aleja/OneDrive/Escritorio/MIA_2S2025_202111782/MIA_1S2025_P1_202200035/disks/DiscoLab.mia"
 
-fdisk -size=1 -type=P -unit=M -fit=BF -name="Particion1" -path="/home/javier/Documentos/Archivos/P1C/MIA_1S2025_P1_202200035/disks/DiscoLab.mia"
+fdisk -size=1 -type=P -unit=M -fit=BF -name="Particion1" -path="C:/Users/aleja/OneDrive/Escritorio/MIA_2S2025_202111782/MIA_1S2025_P1_202200035/disks/DiscoLab.mia"
 
-mount -name="Particion1" -path="/home/javier/Documentos/Archivos/P1C/MIA_1S2025_P1_202200035/disks/DiscoLab.mia"
+mount -name="Particion1" -path="C:/Users/aleja/OneDrive/Escritorio/MIA_2S2025_202111782/MIA_1S2025_P1_202200035/disks/DiscoLab.mia"
 
 mkfs -id=351A
 
 login -user=root -pass=123 -id=351A
 
 
-mkdir -path="/home"
-mkdir -path="/home/usac"
-mkdir -path="/home/work"
-mkdir -path="/home/usac/mia"
+mkdir -path="C:/Users/aleja/OneDrive/Escritorio"
+mkdir -path="C:/Users/aleja/OneDrive/Escritorio/usac"
+mkdir -path="C:/Users/aleja/OneDrive/Escritorioe/work"
+mkdir -path="C:/Users/aleja/OneDrive/Escritorio/usac/mia"
 
-mkfile -path="/home/usac/mia/texto.txt"
+mkfile -path="C:/Users/aleja/OneDrive/Escritorio/usac/mia/texto.txt"
 
-rep -id=351A -path="/home/javier/Documentos/Archivos/P1C/MIA_1S2025_P1_202200035/backend/output/report_inode.png" -name=inode
-rep -id=351A -path="/home/javier/Documentos/Archivos/P1C/MIA_1S2025_P1_202200035/backend/output/report_bm_inode.txt" -name=bm_inode
+rep -id=351A -path="C:/Users/aleja/OneDrive/Escritorio/MIA_2S2025_202111782/MIA_1S2025_P1_202200035/output/report_inode.png" -name=inode
+rep -id=351A -path="C:/Users/aleja/OneDrive/Escritorio/MIA_2S2025_202111782/MIA_1S2025_P1_202200035/output/report_bm_inode.txt" -name=bm_inode

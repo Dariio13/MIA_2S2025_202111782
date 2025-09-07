@@ -6,7 +6,7 @@ import (
 )
 
 // Carnet de estudiante
-const Carnet string = "35" // 202200035
+const Carnet string = "82" // 202111782
 // Declaración de las particiones montadas
 var (
 	MountedPartitions map[string]string = make(map[string]string)
