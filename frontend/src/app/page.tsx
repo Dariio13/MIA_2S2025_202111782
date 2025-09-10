@@ -55,7 +55,7 @@ export default function Home() {
       <div className="max-w-5xl mx-auto space-y-6">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
-            Javier Bonilla - ARCHIVOS 
+            Dario Tul Teo - ARCHIVOS 
           </h1>
           <div className="flex gap-4">
             <label
