@@ -1,138 +1,160 @@
 package commands
 
 import (
-	reports "backend/reports"
-	stores "backend/stores"
-	"errors"
-	"fmt"
-	"regexp"
-	"strings"
+    reports "backend/reports"
+    stores "backend/stores"
+    "errors"
+    "fmt"
+    "regexp"
+    "strings"
 )
 
 // REP estructura que representa el comando rep con sus parámetros
 type REP struct {
-	id           string // ID del disco
-	path         string // Ruta del archivo del disco
-	name         string // Nombre del reporte
-	path_file_ls string // Ruta del archivo ls (opcional)
+    id           string // ID del disco
+    path         string // Ruta donde guardar el reporte
+    name         string // Tipo de reporte
+    path_file_ls string // Ruta opcional para reportes tipo ls/file
 }
 
-// ParserRep parsea el comando rep y devuelve una instancia de REP
+// ParseRep parsea el comando rep y devuelve la respuesta o un error
 func ParseRep(tokens []string) (string, error) {
-	cmd := &REP{} // Crea una nueva instancia de REP
+    cmd := &REP{}
 
-	// Unir tokens en una sola cadena y luego dividir por espacios, respetando las comillas
-	args := strings.Join(tokens, " ")
-	// Expresión regular para encontrar los parámetros del comando rep
-	re := regexp.MustCompile(`-id=[^\s]+|-path="[^"]+"|-path=[^\s]+|-name=[^\s]+|-path_file_ls="[^"]+"|-path_file_ls=[^\s]+`)
-	// Encuentra todas las coincidencias de la expresión regular en la cadena de argumentos
-	matches := re.FindAllString(args, -1)
+    args := strings.Join(tokens, " ")
+    re := regexp.MustCompile(`-id=[^\s]+|-path="[^"]+"|-path=[^\s]+|-name=[^\s]+|-path_file_ls="[^"]+"|-path_file_ls=[^\s]+`)
+    matches := re.FindAllString(args, -1)
 
-	// Itera sobre cada coincidencia encontrada
-	for _, match := range matches {
-		// Divide cada parte en clave y valor usando "=" como delimitador
-		kv := strings.SplitN(match, "=", 2)
-		if len(kv) != 2 {
-			return "", fmt.Errorf("formato de parámetro inválido: %s", match)
-		}
-		key, value := strings.ToLower(kv[0]), kv[1]
+    // Validar tokens inválidos
+    if len(matches) != len(tokens) {
+        for _, token := range tokens {
+            if !re.MatchString(token) {
+                return "", fmt.Errorf("parámetro inválido: %s", token)
+            }
+        }
+    }
 
-		// Remove quotes from value if present
-		if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
-			value = strings.Trim(value, "\"")
-		}
+    // Procesar parámetros reconocidos
+    for _, match := range matches {
+        kv := strings.SplitN(match, "=", 2)
+        if len(kv) != 2 {
+            return "", fmt.Errorf("formato de parámetro inválido: %s", match)
+        }
+        key, value := strings.ToLower(kv[0]), kv[1]
 
-		// Switch para manejar diferentes parámetros
-		switch key {
-		case "-id":
-			// Verifica que el id no esté vacío
-			if value == "" {
-				return "", errors.New("el id no puede estar vacío")
-			}
-			cmd.id = value
-		case "-path":
-			// Verifica que el path no esté vacío
-			if value == "" {
-				return "", errors.New("el path no puede estar vacío")
-			}
-			cmd.path = value
-		case "-name":
-			// Verifica que el nombre sea uno de los valores permitidos
-			validNames := []string{"mbr", "disk", "inode", "block", "bm_inode", "bm_block", "sb", "file", "ls"}
-			if !contains(validNames, value) {
-				return "", errors.New("nombre inválido, debe ser uno de los siguientes: mbr, disk, inode, block, bm_inode, bm_block, sb, file, ls")
-			}
-			cmd.name = value
-		case "-path_file_ls":
-			cmd.path_file_ls = value
-		default:
-			// Si el parámetro no es reconocido, devuelve un error
-			return "", fmt.Errorf("parámetro desconocido: %s", key)
-		}
-	}
+        if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+            value = strings.Trim(value, "\"")
+        }
 
-	// Verifica que los parámetros obligatorios hayan sido proporcionados
-	if cmd.id == "" || cmd.path == "" || cmd.name == "" {
-		return "", errors.New("faltan parámetros requeridos: -id, -path, -name")
-	}
+        switch key {
+        case "-id":
+            if value == "" {
+                return "", errors.New("el id no puede estar vacío")
+            }
+            cmd.id = value
+        case "-path":
+            if value == "" {
+                return "", errors.New("el path no puede estar vacío")
+            }
+            cmd.path = value
+        case "-name":
+            validNames := []string{"mbr", "tree", "disk", "inode", "block", "bm_inode", "bm_block", "sb", "file", "ls"}
+            if !contains(validNames, value) {
+                return "", errors.New("nombre inválido, debe ser uno de los siguientes: mbr, tree, disk, inode, block, bm_inode, bm_block, sb, file, ls")
+            }
+            cmd.name = value
+        case "-path_file_ls":
+            cmd.path_file_ls = value
+        default:
+            return "", fmt.Errorf("parámetro desconocido: %s", key)
+        }
+    }
 
-	// Aquí se puede agregar la lógica para ejecutar el comando rep con los parámetros proporcionados
-	err := commandRep(cmd)
-	if err != nil {
-		return "", err
-	}
+    // Verificar parámetros obligatorios
+    if cmd.id == "" || cmd.path == "" || cmd.name == "" {
+        return "", errors.New("faltan parámetros requeridos: -id, -path, -name")
+    }
 
-	return fmt.Sprintf("REP: Reporte generado exitosamente\n"+
-		"-> ID: %s\n"+
-		"-> Path: %s\n"+
-		"-> Tipo: %s%s",
-		cmd.id,
-		cmd.path,
-		cmd.name,
-		func() string {
-			if cmd.path_file_ls != "" {
-				return fmt.Sprintf("\n-> Path LS: %s", cmd.path_file_ls)
-			}
-			return ""
-		}()), nil
+    // Ejecutar el comando
+    err := commandRep(cmd)
+    if err != nil {
+        return "", err
+    }
+
+    return fmt.Sprintf("REP: Reporte generado exitosamente\n"+
+        "-> ID: %s\n"+
+        "-> Path: %s\n"+
+        "-> Tipo: %s%s",
+        cmd.id,
+        cmd.path,
+        cmd.name,
+        func() string {
+            if cmd.path_file_ls != "" {
+                return fmt.Sprintf("\n-> Path LS: %s", cmd.path_file_ls)
+            }
+            return ""
+        }()), nil
 }
 
 // Función auxiliar para verificar si un valor está en una lista
 func contains(list []string, value string) bool {
-	for _, v := range list {
-		if v == value {
-			return true
-		}
-	}
-	return false
+    for _, v := range list {
+        if v == value {
+            return true
+        }
+    }
+    return false
 }
 
-// Ejemplo de función commandRep (debe ser implementada)
+// commandRep genera los reportes solicitados
 func commandRep(rep *REP) error {
-	// Obtener la partición montada
-	mountedMbr, mountedSb, mountedDiskPath, err := stores.GetMountedPartitionRep(rep.id)
-	if err != nil {
-		return err
-	}
+    // Validar sesión activa
+    if !stores.Auth.IsAuthenticated() {
+        return fmt.Errorf("Error: no se ha iniciado sesión en ninguna partición")
+    }
 
-	// Switch para manejar diferentes tipos de reportes
-	switch rep.name {
-	case "mbr":
-		err = reports.ReportMBR(mountedMbr, rep.path)
-		if err != nil {
-			fmt.Printf("Error: %v\n", err)
-		}
-	case "inode":
-		err = reports.ReportInode(mountedSb, mountedDiskPath, rep.path)
-		if err != nil {
-			fmt.Printf("Error: %v\n", err)
-		}
-	case "bm_inode":
-		err = reports.ReportBMInode(mountedSb, mountedDiskPath, rep.path)
-		if err != nil {
-			fmt.Printf("Error: %v\n", err)
-		}
-	}
+    // Verificar que el ID solicitado corresponda al de la sesión activa
+    _, _, currentPartitionID := stores.Auth.GetCurrentUser()
+    if currentPartitionID != rep.id {
+        return fmt.Errorf("Error: la sesión actual no corresponde al ID %s", rep.id)
+    }
 
-	return nil
+    // Obtener la partición montada para generar reportes
+    mountedMbr, mountedSb, mountedDiskPath, err := stores.GetMountedPartitionRep(rep.id)
+    if err != nil {
+        return fmt.Errorf("error al obtener la partición montada: %w", err)
+    }
+
+    // Manejo de reportes según el tipo solicitado
+    switch rep.name {
+    case "mbr":
+        return reports.ReportMBR(mountedMbr, rep.path)
+    case "disk":
+        return reports.ReportDisk(mountedSb, mountedDiskPath, rep.path)
+    case "inode":
+        return reports.ReportInode(mountedSb, mountedDiskPath, rep.path)
+    case "block":
+        return reports.ReportBlock(mountedSb, mountedDiskPath, rep.path)
+    case "bm_inode":
+        return reports.ReportBMInode(mountedSb, mountedDiskPath, rep.path)
+    case "bm_block":
+        return reports.ReportBMBlock(mountedSb, mountedDiskPath, rep.path)
+    case "sb":
+        return reports.ReportSB(mountedSb, mountedDiskPath, rep.path)
+    case "file":
+        if rep.path_file_ls == "" {
+            return fmt.Errorf("error: para generar un reporte tipo 'file' debes especificar -path_file_ls")
+        }
+        return reports.ReportFile(mountedSb, mountedDiskPath, rep.path_file_ls, rep.path)
+    case "ls":
+        if rep.path_file_ls == "" {
+            return fmt.Errorf("error: para generar un reporte tipo 'ls' debes especificar -path_file_ls")
+        }
+        return reports.ReportLS(mountedSb, mountedDiskPath, rep.path_file_ls, rep.path)
+    case "tree":
+        // 🔹 Si aún no implementas el árbol, devolvemos una imagen vacía
+        return reports.GenerateDummyTree(mountedSb, mountedDiskPath, rep.path)
+    default:
+        return fmt.Errorf("reporte '%s' no implementado", rep.name)
+    }
 }

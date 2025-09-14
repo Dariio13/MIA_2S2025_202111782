@@ -62,6 +62,7 @@ func ParseFdisk(tokens []string) (string, error) {
 			cmd.size = size
 		case "-unit":
 			// Verifica que la unidad sea "K" o "M"
+			value = strings.ToUpper(value)
 			if value != "K" && value != "M" {
 				return "", errors.New("la unidad debe ser K o M")
 			}
@@ -183,7 +184,7 @@ func createPrimaryPartition(fdisk *FDISK, sizeBytes int) error {
 	// Obtener la primera partición disponible
 	availablePartition, startPartition, indexPartition := mbr.GetFirstAvailablePartition()
 	if availablePartition == nil {
-		fmt.Println("No hay particiones disponibles.")
+		return fmt.Errorf("Error: No hay particiones disponibles.")
 	}
 
 	/* SOLO PARA VERIFICACIÓN */

@@ -9,6 +9,7 @@ import (
 
 type FileBlock struct {
 	B_content [64]byte
+	InodeID   int32
 	// Total: 64 bytes
 }
 

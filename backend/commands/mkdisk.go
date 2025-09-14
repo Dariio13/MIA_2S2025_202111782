@@ -62,6 +62,7 @@ func ParseMkdisk(tokens []string) (string, error) {
 			}
 			cmd.size = size
 		case "-unit":
+			value = strings.ToUpper(value)
 			if value != "K" && value != "M" {
 				return "", errors.New("la unidad debe ser K o M")
 			}

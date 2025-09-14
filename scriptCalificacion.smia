@@ -175,6 +175,7 @@ login -user=root -pass=123 -id=821A
 # (si aplica)
 
 #-----------------15. MKDIR-----------------
+login -user=root -pass=123 -id=821A
 mkdir -path=/bin
 # ERROR NO EXISTEN LAS CARPETAS PADRES
 mkdir -path="/home/archivos/archivos 24"
